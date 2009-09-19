@@ -1,7 +1,0 @@
-
-
-Processing InfoController#properties (for 127.0.0.1 at 2009-09-16 21:25:24) [GET]
-  Session ID: 7167b004687e7d18c7a04a0ae5ad3829
-  Parameters: {"action"=>"properties", "controller"=>"rails/info"}
-  [4;36;1mSQL (0.000000)[0m   [0;1mSQLite3::SQLException: no such table: schema_migrations: SELECT version FROM schema_migrations[0m
-Completed in 0.06425 (15 reqs/sec) | Rendering: 0.00564 (8%) | DB: 0.00000 (0%) | 200 OK [http://localhost/rails/info/properties]
