@@ -2,6 +2,7 @@ class UserController < ApplicationController
 	protect_from_forgery :only => [:logout]
 
   def authenticate
+    puts @user
     u = User.find :first, :conditions => {:name => params[:user][:name], :password => params[:user][:password]}
 
     if u.nil?

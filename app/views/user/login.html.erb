@@ -1,12 +1,12 @@
 <html>
   <body>
     <div class="errors"><%= flash[:errors] %></div>
-    <form action="/user/authenticate" method="post">
+    <% form_for :user, @user, :url => { :action => "authenticate" } do |f| %>
       <p><label for="user_name">Name</label>
-      <%= text_field 'user','name' %> </p>
+      <%= f.text_field :name %> </p>
       <p><label for="user_password">Password</label>
-      <%= text_field 'user','password' %></p>
+      <%= f.password_field :password %></p>
       <%= submit_tag "Login" %>
-    </form>
+    <% end %>
   </body>
 </html>
