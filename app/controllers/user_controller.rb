@@ -5,7 +5,7 @@ class UserController < ApplicationController
     u = User.find :first, :conditions => {:name => params[:user][:name], :password => params[:user][:password]}
 
     if u.nil?
-      flash[:errors] = params[:user][:name] + " " + params[:user][:password]
+      flash[:errors] = "The username or password entered is incorrect"
       redirect_to :action => :login
     else
       current_user = u

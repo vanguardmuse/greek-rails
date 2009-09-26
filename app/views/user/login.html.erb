@@ -1,6 +1,6 @@
 <html>
   <body>
-    <div><%= flash[:errors] %></div>
+    <div class="errors"><%= flash[:errors] %></div>
     <form action="/user/authenticate" method="post">
       <p><label for="user_name">Name</label>
       <%= text_field 'user','name' %> </p>
