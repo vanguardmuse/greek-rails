@@ -1,0 +1,12 @@
+<html>
+  <body>
+    <div><%= flash[:errors] %></div>
+    <form action="/user/authenticate" method="post">
+      <p><label for="user_name">Name</label>
+      <%= text_field 'user','name' %> </p>
+      <p><label for="user_password">Password</label>
+      <%= text_field 'user','password' %></p>
+      <input type="submit" name="Login" />
+    </form>
+  </body>
+</html>
