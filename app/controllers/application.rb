@@ -14,10 +14,11 @@ class ApplicationController < ActionController::Base
   filter_parameter_logging :password
 
   def current_user
+    return nil if session[:current_user_id].nil?
     User.find(session[:current_user_id])
   end
 
   def current_user= u
-    session[:current_user_id] = u.id
+    session[:current_user_id] = u.id unless u.id.nil?
   end
 end
