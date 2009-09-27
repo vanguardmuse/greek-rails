@@ -1,15 +1,11 @@
-<html>
-  <body>
-    <ul>
-      <% @semesters.each do |semester| %>
-        <li><%= semester.name %>
-          <ul>
-            <% semester.users.each do |user| %>
-              <li><%= user.name %></li>
-            <% end %>
-          </ul>
-        </li>
-      <% end %>
-    </ul>
-  </body>
-</html>
+<ul>
+  <% @semesters.each do |semester| %>
+    <li><%= semester.name %>
+      <ul>
+        <% semester.users.each do |user| %>
+          <li><%= user.name %></li>
+        <% end %>
+      </ul>
+    </li>
+  <% end %>
+</ul>
