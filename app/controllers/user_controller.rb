@@ -1,6 +1,14 @@
 class UserController < ApplicationController
 	protect_from_forgery :only => [:logout]
 
+  def list
+    @semesters = Semester.find :all
+  end
+
+  def show
+    @user = User.find(params[:id])
+  end
+
   def authenticate
     puts @user
     u = User.find :first, :conditions => {:name => params[:user][:name], :password => params[:user][:password]}
