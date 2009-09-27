@@ -3,7 +3,7 @@
     <li><%= semester.name %>
       <ul>
         <% semester.users.each do |user| %>
-          <li><%= user.name %></li>
+          <li><%= link_to user.name, {:action => :show, :id => user.id } %></li>
         <% end %>
       </ul>
     </li>
