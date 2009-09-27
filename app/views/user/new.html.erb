@@ -1,0 +1,9 @@
+<% form_for :user, :url => { :action => :create } do |f| %>
+  <%= f.label :name, "Name" %>
+  <%= f.text_field :name %>
+  <%= f.label :password, "Password" %>
+  <%= f.password_field :password %>
+  <%= f.label :semester_id, "Semester" %>
+  <%= f.collection_select(:semester_id, Semester.find(:all) , :id, :name) %>
+  <%= submit_tag "Create" %>
+<% end %>

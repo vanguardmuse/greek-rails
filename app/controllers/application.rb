@@ -14,11 +14,32 @@ class ApplicationController < ActionController::Base
   filter_parameter_logging :password
 
   def current_user
-    return nil if session[:current_user_id].nil?
-    User.find(session[:current_user_id])
+    session[:user]
   end
 
-  def current_user= u
-    session[:current_user_id] = u.id unless u.id.nil?
+  def login_required
+    puts "User: #{session[:user].inspect}"
+    if current_user
+      return true
+    else
+      flash[:errors] = 'Please login to continue'
+      session[:return_to] = request.request_uri
+      redirect_to :controller => :user, :action => :login
+      return false
+    end
+  end
+
+  def redirect_to_stored
+    if return_to = session[:return_to]
+      session[:return_to] = nil
+      redirect_to return_to
+      return true
+    else
+      return false
+    end
+  end
+
+  def output_session
+    p session[:current_user]
   end
 end

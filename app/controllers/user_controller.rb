@@ -1,5 +1,7 @@
 class UserController < ApplicationController
-	protect_from_forgery :only => [:logout]
+
+  before_filter :login_required, :only => [:new,:create,:logout]
+  #before_filter :output_session
 
   def list
     @semesters = Semester.find :all
@@ -9,16 +11,29 @@ class UserController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def authenticate
-    puts @user
-    u = User.find :first, :conditions => {:name => params[:user][:name], :password => params[:user][:password]}
+  def new
+  end
 
+  def create
+    @user = User.new(params[:user])
+    if @user.save
+      redirect_to :action => :list
+    else
+      flash[:errors] = "Invalid User"
+      redirect_to :action => :new
+    end
+  end
+
+  def authenticate
+    u = User.find :first, :conditions => params[:user]
     if u.nil?
       flash[:errors] = "The username or password entered is incorrect"
       redirect_to :action => :login
     else
-      current_user = u
-      redirect_to :action => :login # this will change to be the main page
+      session[:user] = u
+      if !(pass = redirect_to_stored)
+        redirect_to :action => :list
+      end
     end
   end
 
@@ -26,7 +41,7 @@ class UserController < ApplicationController
   end
 
   def logout
-    current_user = nil
+    session[:user] = nil
     redirect_to :action => :login
   end
 end
