@@ -5,3 +5,11 @@
 #
 # two:
 #   column: value
+rush:
+  date: <%= Time.now %>
+  location: Chapter
+  title: Stuff
+  summary: stuff
+  description: stuff
+  user: kristina
+  internal: false

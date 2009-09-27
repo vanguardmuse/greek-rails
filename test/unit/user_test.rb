@@ -3,18 +3,9 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
 
   def setup
-    @s = Semester.new do |s|
-      s.name="Fall 2009"
-    end
-    @s.save
-    @u = User.new do |u|
-      u.name="Kristina"
-      u.password="Kristina"
-      u.semester=@s
-    end
-    @u.save
+    @u = users(:kristina)
   end
-  # Replace this with your real tests.
+
   def test_requires_name
     @u.name = nil
     assert !@u.save
@@ -26,7 +17,6 @@ class UserTest < ActiveSupport::TestCase
   end
 
   def teardown
-    @u.destroy
-    @s.destroy
+    @u = nil
   end
 end

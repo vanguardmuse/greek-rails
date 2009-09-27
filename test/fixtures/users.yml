@@ -5,3 +5,7 @@
 #
 # two:
 #   column: value
+kristina:
+  name: kristina
+  password: password
+  semester: fall
