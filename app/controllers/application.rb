@@ -18,7 +18,6 @@ class ApplicationController < ActionController::Base
   end
 
   def login_required
-    puts "User: #{session[:user].inspect}"
     if current_user
       return true
     else

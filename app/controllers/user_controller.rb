@@ -31,7 +31,7 @@ class UserController < ApplicationController
       redirect_to :action => :login
     else
       session[:user] = u
-      if !(pass = redirect_to_stored)
+      if !(redirect_to_stored)
         redirect_to :action => :list
       end
     end
