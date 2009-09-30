@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(:version => 20090930014955) do
 
   create_table "semesters", :force => true do |t|
     t.string "name"
-    t.string "class"
+    t.string "family"
   end
 
   create_table "users", :force => true do |t|

@@ -1,5 +1,6 @@
 class EventController < ApplicationController
   def list
+    @events = Event.find(:all)
   end
 
   def show

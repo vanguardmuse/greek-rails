@@ -1,13 +1,13 @@
-class AddClassToSemester < ActiveRecord::Migration
+class AddFamilyToSemester < ActiveRecord::Migration
   def self.up
     change_table :semesters do |t|
-      t.string  :class
+      t.string  :family
     end
   end
 
   def self.down
     change_table :semesters do |t|
-      t.remove  :class
+      t.remove  :family
     end
   end
 end

@@ -1,5 +1,5 @@
 <ul>
-  <% Event.find(:all).each do |event| %>
+  <% @events.each do |event| %>
     <li>
       <%= link_to event.title, {:action => :show, :id => event.id } %>
       <label for="event_summary">Summary</label>
