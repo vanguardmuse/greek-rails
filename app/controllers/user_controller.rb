@@ -1,6 +1,7 @@
 class UserController < ApplicationController
 
   before_filter :login_required, :only => [:new,:create,:logout]
+  before_filter :admin_required, :only => [:new,:create]
   #before_filter :output_session
 
   def list

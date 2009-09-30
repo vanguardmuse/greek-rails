@@ -28,6 +28,19 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def admin_required
+    if current_user && current_user.admin
+      return true
+    else
+      flash[:errors] = 'You must be an administrator to perform that action'
+      if request.referer
+        redirect_to request.referer
+      else
+        redirect_to :controller => :event, :action => :list
+      end
+    end
+  end
+
   def redirect_to_stored
     if return_to = session[:return_to]
       session[:return_to] = nil
