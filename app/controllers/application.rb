@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
   end
 
   def admin_required
-    if current_user && current_user.admin
+    if is_admin?
       return true
     else
       flash[:errors] = 'You must be an administrator to perform that action'
@@ -39,6 +39,10 @@ class ApplicationController < ActionController::Base
         redirect_to :controller => :event, :action => :list
       end
     end
+  end
+
+  def is_admin?
+    return current_user && current_user.admin
   end
 
   def redirect_to_stored

@@ -1,6 +1,6 @@
 class EventController < ApplicationController
   def list
-    @events = Event.find(:all)
+    @events = Event.find(:all,:order => "date", :conditions => ["date > :today",{:today => Time.now}])
   end
 
   def show

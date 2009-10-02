@@ -5,7 +5,7 @@
       <label for="event_summary">Summary</label>
       <span id="event_summary"><%= event.summary %></span>
       <label for="event_date">Date and Time</label>
-      <span id="event_date"><%= event.date %></span>
+      <span id="event_date"><%= event.date.localtime.strftime("%c") %></span>
       <label for="event_location">Location</label>
       <span id="event_location"><%= event.location %>
     </li>
